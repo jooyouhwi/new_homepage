@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.wow.api.dao.CertifiedMapper">
+	
+	<select id="getwowConfigAccountInfo" parameterType="com.wow.api.model.CertifiedModel" resultType="com.wow.api.model.CertifiedModel">
+		SELECT CT_Bank_CD   as ctBankCd 
+		     , CT_Bank_PW   as ctBankPw 
+		     , CT_Site_CD   as ctSiteCd
+		     , CT_Site_PW   as ctSitePw
+		     , CT_Site_F_CD as ctSiteFCd
+		     , CT_Site_F_PW as ctSiteFPw
+		  FROM API_COMPANY
+		 WHERE COM_ID = #{comId}                      
+	</select>
+	
+	<select id="getDecryptAccountInfo" parameterType="com.wow.api.model.CertifiedModel" resultType="com.wow.api.model.CertifiedModel">
+		SELECT ENCRYPT_PKG.KAIDOKU_ACCT_NO(#{accNo})   as accNo     
+		     , ENCRYPT_PKG.KAIDOKU_JUMIN_NO(#{birthday}) as birthday
+		  FROM DUAL     
+	</select>
+	
+	<select id="getDecryptNameInfo" parameterType="com.wow.api.model.CertifiedModel" resultType="com.wow.api.model.CertifiedModel">
+		SELECT ENCRYPT_PKG.KAIDOKU_JUMIN_NO(#{sJumin1})  as sJumin1
+		     , ENCRYPT_PKG.KAIDOKU_JUMIN_NO(#{sJumin2})  as sJumin2	
+		  FROM DUAL    
+	</select>
+	
+	<!-- 계좌인증 로그 저장 -->
+    <insert id="insertCertifyLog" parameterType="HashMap">
+    	/* insertCertifyLog */
+        INSERT INTO Certify_Nice
+                ( Com_ID     
+				, Reg_NO        
+				, Userid        
+				, Kind          
+				, Certify_Name  
+				, Status        
+				, Result_Ord_No 
+				, Result_Cd     
+				, Result_Msg    
+				, Username      
+				, Jumin_No      
+				, Bank_Cd       
+				, Card_No       
+				, Work_Kind     
+				, Work_Date    
+				, Work_User)
+         VALUES ( #{comId}     
+		         , SEQ_Log.Nextval
+		         , #{userid}
+		         , #{kind}
+		         , #{certifyName}
+		         , #{status}
+		         , #{rstOrdNo}  
+		         , #{rstCd}      
+		         , #{rstMsg}
+		         , #{username}
+		         , Encrypt_PKG.Enc_Jumin(#{birthday})
+		         , #{strBankCode}        
+		         , #{cardNo}        
+		         , #{workKind}     
+		         , TO_CHAR(SYSDATE,'YYYYMMDD')
+		         , #{userid}
+                )
+	</insert>
+</mapper>

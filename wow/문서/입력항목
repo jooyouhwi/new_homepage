@@ -1,0 +1,13 @@
+필수 입력 항목 
+kind  - 공통 
+type  - 공통 
+comId - 업체별 comId 
+----------------------------------------------------
+카드결제        - kind = payment    - type = card
+카드취소        - kind = payment    - type = cancel
+가상계좌        - kind = payment    - type = account
+계좌번호인증   - kind = certified  - type = account
+휴대폰인증      - 불가
+실명인증        - kind = certified  - type = name 
+직판신고 연동  - kind = report     - type = direct
+----------------------------------------------------

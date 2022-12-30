@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.wow.api.dao.CompanyMapper">
+	
+	<!-- 뉴스 조회 -->
+	<select id="listCompany" parameterType="com.wow.api.model.CompanyModel" resultType="com.wow.api.model.CompanyModel">
+		SELECT COM_ID as comId
+		     , COM_CD as comCd 
+		  FROM API_COMPANY 
+		 WHERE COM_ID =#{comId}
+	</select>
+	
+	
+	<insert id="insertTable" parameterType="com.wow.api.model.CompanyModel">
+		INSERT INTO log_test (Com_Id ,Work_Date) VALUES ('WOWNET',SYSDATE)
+	</insert>
+		
+</mapper>

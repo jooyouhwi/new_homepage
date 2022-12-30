@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.wow.api.dao.MaccoMapper">
+	
+	<!-- 공제번호 파라메터 로그 저장 -->
+    <insert id="insertLogMacco" parameterType="HashMap">
+		INSERT INTO Log_Macco(COM_ID     
+		                    , ORDER_ID   
+		                    , SHOP_ID    
+		                    , C_TYPE     
+		                    , TOTAL_MONEY
+		                    , SELLER_TYPE
+		                    , NAME       
+		                    , USERID     
+		                    , MEM_ID     
+		                    , MERC_CODE  
+		                    , RETURN_TYPE
+		                    , JP_CODE    
+		                    , JP_PAY_TYPE
+		                    , WORKUSER   
+		                    , ORD_TIME   
+		                    , ORD_KIND   
+		                    , NO         
+		                    , ORI_NO     
+		                    , PROC_KIND  
+		                    , BP_ORD_NO  
+		                    , CTR_CD
+		            )VALUES(  #{comId}      
+						    , #{orderid}    
+				    		, #{shopid}     
+						    , #{ctype}      
+						    , #{totalmoney} 
+						    , #{seller_type}
+						    , #{name}       
+						    , #{userid}     
+						    , #{mem_id}     
+						    , #{merc_code}  
+						    , #{returntype} 
+						    , #{jp_code}    
+						    , #{jp_pay_type}
+						    , #{workUser}   
+						    , #{ordTime}    
+						    , #{ordKind}    
+						    , #{no}         
+						    , #{oriNo}      
+						    , #{procKind}   
+						    , #{bpOrdNo}    
+						    , #{ctrCd}             
+						    )
+    </insert>	
+	<!-- 공제번호 발급 로그 저장 -->
+    <insert id="insertOrdGuild" parameterType="HashMap">
+    	/* insertOrdGuild */
+        INSERT INTO ORD_GUILD
+                ( Com_Id
+                , Ord_NO
+                , Seq
+                , Gubun
+                , License_No
+                , Send_YN
+                , Err_CD
+                , Amt
+                , Seller_CD
+                , UserName
+                , Jumin_NO
+                , Userid
+                , Work_Date
+                , Work_User
+                , Ord_Time )
+         VALUES ( #{comId}
+                , #{ordNo}
+                , (SELECT NVL(MAX(SEQ), 0) + 1 AS SEQ
+                     FROM ORD_GUILD
+                    WHERE ORD_NO = #{ordNo})
+                , #{gubun}
+                , #{licenseNo}
+                , #{sendYn}
+                , #{errCd}
+                , #{amt}
+                , #{sellerCd}
+                , #{userName}
+                , #{juminNo}
+                , #{userId}
+                , SYSDATE
+                , #{workUser}
+                , #{ordTime}
+                )
+	</insert>
+	
+	  <!-- 공제번호 발급 성공 -->
+    <update id="updateOrdGuildSuccess" parameterType="HashMap">
+    	/* updateOrdGuildSuccess */
+        UPDATE Ord_Mst                 
+           SET License_Code = #{errCd}
+             , License_No = DECODE(#{gubun},'X',#{licenseNo}||'(취소상태)',#{licenseNo})
+             , License_Date = SYSDATE
+         WHERE Com_Id = #{comId} 
+           AND Ord_NO = #{ordNo}
+    </update>
+    
+    <!-- 공제번호 발급 실패 -->
+    <update id="updateOrdGuildFail" parameterType="HashMap">
+    	/* updateOrdGuildFail */
+        UPDATE Ord_Mst
+           SET License_Code = #{errCd}
+             , License_Date = SYSDATE 
+         WHERE Com_Id = #{comId} 
+           AND Ord_NO = #{ordNo}
+          
+    </update>
+    
+		
+</mapper>

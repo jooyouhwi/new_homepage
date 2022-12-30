@@ -1,0 +1,248 @@
+[2022-11-07 10:30:22:650][main] INFO  com.wow.api.WowApplication - Starting WowApplication using Java 1.8.0_275 on DESKTOP-68LF8MN with PID 182936 (D:\wownet\Spring_API_SVN\wow\target\classes started by wowcns in D:\wownet\Spring_API_SVN\wow)
+[2022-11-07 10:30:23:813][main] INFO  com.wow.api.WowApplication - No active profile set, falling back to 1 default profile: "default"
+[2022-11-07 10:30:23:1502][main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2022-11-07 10:30:23:1556][main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 47 ms. Found 2 JPA repository interfaces.
+[2022-11-07 10:30:24:1959][main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 80 (http)
+[2022-11-07 10:30:24:1966][main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-80"]
+[2022-11-07 10:30:24:1967][main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+[2022-11-07 10:30:24:1967][main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.68]
+[2022-11-07 10:30:24:2095][main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+[2022-11-07 10:30:24:2095][main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1250 ms
+[2022-11-07 10:30:24:2242][main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+[2022-11-07 10:30:24:2501][main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+[2022-11-07 10:30:24:2535][main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+[2022-11-07 10:30:24:2568][main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.12.Final
+[2022-11-07 10:30:25:2674][main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[2022-11-07 10:30:25:2751][main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
+[2022-11-07 10:30:25:3305][main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[2022-11-07 10:30:25:3370][main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2022-11-07 10:30:26:4338][main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-80"]
+[2022-11-07 10:30:26:4352][main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 80 (http) with context path ''
+[2022-11-07 10:30:26:4353][main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+[2022-11-07 10:30:26:4366][main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+[2022-11-07 10:30:26:4374][main] INFO  s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+[2022-11-07 10:30:26:4390][main] INFO  com.wow.api.WowApplication - Started WowApplication in 4.001 seconds (JVM running for 5.971)
+[2022-11-07 10:34:54:272229][RMI TCP Connection(14)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+[2022-11-07 10:34:55:273130][RMI TCP Connection(14)-127.0.0.1] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-80"]
+[2022-11-07 10:34:55:273130][RMI TCP Connection(14)-127.0.0.1] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+[2022-11-07 10:34:55:273135][RMI TCP Connection(14)-127.0.0.1] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-80"]
+[2022-11-07 10:34:55:273138][RMI TCP Connection(14)-127.0.0.1] INFO  o.a.coyote.http11.Http11NioProtocol - Destroying ProtocolHandler ["http-nio-80"]
+[2022-11-07 10:34:55:273142][RMI TCP Connection(14)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+[2022-11-07 10:34:55:273144][RMI TCP Connection(14)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+[2022-11-07 10:34:55:273182][RMI TCP Connection(14)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+[2022-11-07 10:35:02:522][main] INFO  com.wow.api.WowApplication - Starting WowApplication using Java 1.8.0_275 on DESKTOP-68LF8MN with PID 179144 (D:\wownet\Spring_API_SVN\wow\target\classes started by wowcns in D:\wownet\Spring_API_SVN\wow)
+[2022-11-07 10:35:02:524][main] INFO  com.wow.api.WowApplication - No active profile set, falling back to 1 default profile: "default"
+[2022-11-07 10:35:03:1180][main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2022-11-07 10:35:03:1233][main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 45 ms. Found 2 JPA repository interfaces.
+[2022-11-07 10:35:03:1647][main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 80 (http)
+[2022-11-07 10:35:03:1652][main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-80"]
+[2022-11-07 10:35:03:1652][main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+[2022-11-07 10:35:03:1653][main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.68]
+[2022-11-07 10:35:03:1787][main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+[2022-11-07 10:35:03:1787][main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1222 ms
+[2022-11-07 10:35:03:1931][main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+[2022-11-07 10:35:04:2199][main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+[2022-11-07 10:35:04:2235][main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+[2022-11-07 10:35:04:2270][main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.12.Final
+[2022-11-07 10:35:04:2382][main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[2022-11-07 10:35:04:2464][main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
+[2022-11-07 10:35:04:3058][main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[2022-11-07 10:35:04:3131][main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2022-11-07 10:35:06:4187][main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-80"]
+[2022-11-07 10:35:06:4200][main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 80 (http) with context path ''
+[2022-11-07 10:35:06:4201][main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+[2022-11-07 10:35:06:4212][main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+[2022-11-07 10:35:06:4221][main] INFO  s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+[2022-11-07 10:35:06:4237][main] INFO  com.wow.api.WowApplication - Started WowApplication in 3.989 seconds (JVM running for 5.765)
+[2022-11-07 10:35:33:31686][RMI TCP Connection(9)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+[2022-11-07 10:35:34:32585][RMI TCP Connection(9)-127.0.0.1] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-80"]
+[2022-11-07 10:35:34:32585][RMI TCP Connection(9)-127.0.0.1] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+[2022-11-07 10:35:34:32590][RMI TCP Connection(9)-127.0.0.1] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-80"]
+[2022-11-07 10:35:34:32592][RMI TCP Connection(9)-127.0.0.1] INFO  o.a.coyote.http11.Http11NioProtocol - Destroying ProtocolHandler ["http-nio-80"]
+[2022-11-07 10:35:34:32596][RMI TCP Connection(9)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+[2022-11-07 10:35:34:32598][RMI TCP Connection(9)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+[2022-11-07 10:35:34:32635][RMI TCP Connection(9)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+[2022-11-07 10:35:41:480][main] INFO  com.wow.api.WowApplication - Starting WowApplication using Java 1.8.0_275 on DESKTOP-68LF8MN with PID 176968 (D:\wownet\Spring_API_SVN\wow\target\classes started by wowcns in D:\wownet\Spring_API_SVN\wow)
+[2022-11-07 10:35:41:482][main] INFO  com.wow.api.WowApplication - No active profile set, falling back to 1 default profile: "default"
+[2022-11-07 10:35:41:1124][main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2022-11-07 10:35:41:1180][main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 48 ms. Found 2 JPA repository interfaces.
+[2022-11-07 10:35:42:1602][main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+[2022-11-07 10:35:42:1607][main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+[2022-11-07 10:35:42:1608][main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+[2022-11-07 10:35:42:1608][main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.68]
+[2022-11-07 10:35:42:1744][main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+[2022-11-07 10:35:42:1745][main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1226 ms
+[2022-11-07 10:35:42:1885][main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+[2022-11-07 10:35:42:2144][main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+[2022-11-07 10:35:42:2177][main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+[2022-11-07 10:35:42:2210][main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.12.Final
+[2022-11-07 10:35:43:2315][main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[2022-11-07 10:35:43:2397][main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
+[2022-11-07 10:35:43:3010][main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[2022-11-07 10:35:43:3090][main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2022-11-07 10:35:44:4152][main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+[2022-11-07 10:35:44:4165][main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+[2022-11-07 10:35:44:4166][main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+[2022-11-07 10:35:44:4179][main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+[2022-11-07 10:35:44:4188][main] INFO  s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+[2022-11-07 10:35:44:4207][main] INFO  com.wow.api.WowApplication - Started WowApplication in 4.005 seconds (JVM running for 5.687)
+[2022-11-07 10:36:11:30610][http-nio-8081-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2022-11-07 10:36:11:30611][http-nio-8081-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+[2022-11-07 10:36:11:30613][http-nio-8081-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+[2022-11-07 10:50:47:906940][http-nio-8081-exec-5] INFO  c.w.a.controller.settlebankPayment - ** payment Start **
+[2022-11-07 10:50:47:907010][http-nio-8081-exec-5] INFO  jdbc.resultsettable - 
+|--------|
+|duplchk |
+|--------|
+|Y       |
+|--------|
+
+[2022-11-07 10:59:46:1445490][http-nio-8081-exec-9] INFO  c.w.a.controller.settlebankPayment - ** payment Start **
+[2022-11-07 10:59:46:1445504][http-nio-8081-exec-9] INFO  jdbc.resultsettable - 
+|--------|
+|duplchk |
+|--------|
+|N       |
+|--------|
+
+[2022-11-07 10:59:46:1445526][http-nio-8081-exec-9] INFO  jdbc.resultsettable - 
+|-------|---------|----------|----------|-------------|----------------------|-----------|---------------------------------|----------------------|-----------|---------------------------------|
+|comid  |pgvendor |pgbankkey |pgbankmid |pgbankaeskey |pgcardkey             |pgcardmid  |pgcardaeskey                     |pgvbankkey            |pgvbankmid |pgvbankaeskey                    |
+|-------|---------|----------|----------|-------------|----------------------|-----------|---------------------------------|----------------------|-----------|---------------------------------|
+|WOWNET |SETTLE   |null      |null      |null         |ST1009281328226982205 |nxca_ks_gu |pgSettle30y739r82jtd709yOfZ2yK5K |ST1009281328226982205 |nx_mid_il  |pgSettle30y739r82jtd709yOfZ2yK5K |
+|-------|---------|----------|----------|-------------|----------------------|-----------|---------------------------------|----------------------|-----------|---------------------------------|
+
+[2022-11-07 10:59:46:1445527][http-nio-8081-exec-9] INFO  c.w.a.controller.settlebankPayment - $$$### REQ_HEADER : {mchtId=nxca_ks_gu, ver=0A17, method=CA, bizType=B0, encCd=23, mchtTrdNo=20221107104201, trdDt=20221107, trdTm=105946, mobileYn=N, osType=W} ###$$$
+[2022-11-07 10:59:46:1445527][http-nio-8081-exec-9] INFO  c.w.a.controller.settlebankPayment - $$$### REQ_BODY : {pmtprdNm=테스트상품, mchtCustNm=진교덕, mchtCustId=12345678, email=kyodeock@gmail.com, cardNo=4966032366532221, vldDtMon=01, vldDtYear=25, idntNo=961112, cardPwd=98, instmtMon=00, crcCd=KRW, taxTypeCd=N, trdAmt=1000, taxAmt=, vatAmt=, taxFreeAmt=, svcAmt=, notiUrl=http://58.233.160.140:7001/settleNoti, mchtParam=comId=WOWNET, keyRegYn=N} ###$$$
+[2022-11-07 10:59:46:1445527][http-nio-8081-exec-9] INFO  c.w.a.controller.settlebankPayment - $$$### RES_HEADER : {mchtId=, ver=, method=, bizType=, encCd=, mchtTrdNo=, trdNo=, trdDt=, trdTm=, outStatCd=, outRsltCd=, outRsltMsg=} ###$$$
+[2022-11-07 10:59:46:1445527][http-nio-8081-exec-9] INFO  c.w.a.controller.settlebankPayment - $$$### RES_BODY : {pktHash=, trdAmt=, issrId=, cardNm=, ninstmtTypeCd=, instmtMon=, apprNo=} ###$$$
+[2022-11-07 10:59:46:1445642][http-nio-8081-exec-9] INFO  c.w.a.controller.settlebankPayment - [20221107104201][SHA256 HASHING] Plain Text[20221107105946nxca_ks_gu202211071042011000ST1009281328226982205] ---> Cipher Text[1de3f0d8d2933a727fc74c3c18caa25d0ea5ef4ed10d8c648f0b711aed7876ff]
+[2022-11-07 10:59:46:1445660][http-nio-8081-exec-9] INFO  c.w.a.controller.settlebankPayment - [20221107104201][AES256 Encrypt] cardNo[4966032366532221] ---> [bxHsENal2JpQLAn2RVWMWqUIyplYZjvvlyPXaDcpMAg=]
+[2022-11-07 10:59:46:1445660][http-nio-8081-exec-9] INFO  c.w.a.controller.settlebankPayment - [20221107104201][AES256 Encrypt] vldDtMon[01] ---> [IGazR7c+0l88fWJgWgB6dw==]
+[2022-11-07 10:59:46:1445660][http-nio-8081-exec-9] INFO  c.w.a.controller.settlebankPayment - [20221107104201][AES256 Encrypt] vldDtYear[25] ---> [ElYSj7V0SHGDAI2zHTYUmQ==]
+[2022-11-07 10:59:46:1445660][http-nio-8081-exec-9] INFO  c.w.a.controller.settlebankPayment - [20221107104201][AES256 Encrypt] idntNo[961112] ---> [btvDBM/3QdHoDujXzr6VuA==]
+[2022-11-07 10:59:46:1445661][http-nio-8081-exec-9] INFO  c.w.a.controller.settlebankPayment - [20221107104201][AES256 Encrypt] cardPwd[98] ---> [lvw9Hi3Ah2V+G59IvRORQg==]
+[2022-11-07 10:59:46:1445661][http-nio-8081-exec-9] INFO  c.w.a.controller.settlebankPayment - [20221107104201][AES256 Encrypt] trdAmt[1000] ---> [AntV/eDpxIaKF0hJiePDKA==]
+[2022-11-07 10:59:46:1445704][http-nio-8081-exec-9] INFO  com.wow.api.common.HttpClientUtil - [20221107104201]=========================START SEND API=========================
+[2022-11-07 10:59:46:1445752][http-nio-8081-exec-9] INFO  com.wow.api.common.HttpClientUtil - [20221107104201][API Send URL]https://tbgw.settlebank.co.kr/spay/APICardActionPay.do
+[2022-11-07 10:59:46:1445752][http-nio-8081-exec-9] INFO  com.wow.api.common.HttpClientUtil - [20221107104201][URL Protocol]https [Connect Timeout]5000 [Read Timeout]20000
+[2022-11-07 10:59:46:1445764][http-nio-8081-exec-9] INFO  com.wow.api.common.HttpClientUtil - [20221107104201][Send Data]{"data":{"pmtprdNm":"테스트상품","mchtCustNm":"진교덕","mchtCustId":"12345678","email":"kyodeock@gmail.com","cardNo":"bxHsENal2JpQLAn2RVWMWqUIyplYZjvvlyPXaDcpMAg=","vldDtMon":"IGazR7c+0l88fWJgWgB6dw==","vldDtYear":"ElYSj7V0SHGDAI2zHTYUmQ==","idntNo":"btvDBM/3QdHoDujXzr6VuA==","cardPwd":"lvw9Hi3Ah2V+G59IvRORQg==","instmtMon":"00","crcCd":"KRW","taxTypeCd":"N","trdAmt":"AntV/eDpxIaKF0hJiePDKA==","taxAmt":"","vatAmt":"","taxFreeAmt":"","svcAmt":"","notiUrl":"http://58.233.160.140:7001/settleNoti","mchtParam":"comId=WOWNET","keyRegYn":"N","pktHash":"1de3f0d8d2933a727fc74c3c18caa25d0ea5ef4ed10d8c648f0b711aed7876ff"},"params":{"mchtId":"nxca_ks_gu","ver":"0A17","method":"CA","bizType":"B0","encCd":"23","mchtTrdNo":"20221107104201","trdDt":"20221107","trdTm":"105946","mobileYn":"N","osType":"W"}}
+[2022-11-07 10:59:46:1446162][http-nio-8081-exec-10] INFO  c.w.a.controller.settlebankPayment - ** settleNoti Start **
+[2022-11-07 10:59:46:1446163][http-nio-8081-exec-10] INFO  c.w.a.controller.settlebankPayment - !!!!noti:[거래상태:0021, 거래번호:STFP_PGCAnxca_ks_gu0221107105946M1124341, 결제수단:CA, 업무구분:B0, 상점아이디:nxca_ks_gu, 상점거래번호:20221107104201, 주문자명:진교덕, 상점한글명:null, 상품명:테스트상품, 거래일시:20221107105946, 거래금액:1000, 자동결제키:SBILL_PGCAnxca_ks_gu20227353321107105946, 자동결제키 유효기간:2501, 은행코드:null, 은행명:null, 카드사코드:BCC, 카드명:IBK비씨체크, 이통사코드:null, 이통사명:null, 가상계좌번호:null, 가상계좌 입금만료일자:null, 통장인자명:null, 입금자명:null, 고객이메일:kyodeock@gmail.com, 상점고객아이디:12345678, 카드번호:496603******2221, 카드승인번호:99002751, 할부개월수:00, 할부타입:null, 휴대폰번호(암호화):null, 원거래번호:null, 원거래일자:null, 복합결제 거래번호:null, 복합결제 금액:null, 실결제금액:null, 현금영수증 승인번호:null, 취소거래타입:null, 기타주문정보:comId=WOWNET, 해쉬값:a976de373f2a83901fd24bc0e1846240ddb126a4fa8d502530dfd5ae15b373df]
+[2022-11-07 10:59:46:1446163][http-nio-8081-exec-10] INFO  c.w.a.controller.settlebankPayment - $$$### Response Param : {bizType=B0, mchtTrdNo=20221107104201, method=CA, trdAmt=1000, cardCd=BCC, billKey=SBILL_PGCAnxca_ks_gu20227353321107105946, mchtParam=comId=WOWNET, cardNo=496603******2221, trdNo=STFP_PGCAnxca_ks_gu0221107105946M1124341, mchtCustNm=진교덕, trdDtm=20221107105946, cardApprNo=99002751, pktHash=a976de373f2a83901fd24bc0e1846240ddb126a4fa8d502530dfd5ae15b373df, cardNm=IBK비씨체크, mchtCustId=12345678, pmtprdNm=테스트상품, outStatCd=0021, instmtMon=00, mchtId=nxca_ks_gu, billKeyExpireDt=2501, email=kyodeock@gmail.com} ###$$$
+[2022-11-07 10:59:46:1446173][http-nio-8081-exec-10] INFO  jdbc.resultsettable - 
+|-------|---------|----------|----------|-------------|----------------------|-----------|---------------------------------|----------------------|-----------|---------------------------------|
+|comid  |pgvendor |pgbankkey |pgbankmid |pgbankaeskey |pgcardkey             |pgcardmid  |pgcardaeskey                     |pgvbankkey            |pgvbankmid |pgvbankaeskey                    |
+|-------|---------|----------|----------|-------------|----------------------|-----------|---------------------------------|----------------------|-----------|---------------------------------|
+|WOWNET |SETTLE   |null      |null      |null         |ST1009281328226982205 |nxca_ks_gu |pgSettle30y739r82jtd709yOfZ2yK5K |ST1009281328226982205 |nx_mid_il  |pgSettle30y739r82jtd709yOfZ2yK5K |
+|-------|---------|----------|----------|-------------|----------------------|-----------|---------------------------------|----------------------|-----------|---------------------------------|
+
+[2022-11-07 10:59:46:1446174][http-nio-8081-exec-10] INFO  c.w.a.controller.settlebankPayment - [20221107104201][SHA256 HASING] Plain Text[002120221107105946nxca_ks_gu202211071042011000ST1009281328226982205] ---> Cipher Text[a976de373f2a83901fd24bc0e1846240ddb126a4fa8d502530dfd5ae15b373df]
+[2022-11-07 10:59:46:1446174][http-nio-8081-exec-10] INFO  c.w.a.controller.settlebankPayment - [20221107104201][SHA256 Hash Check] hashCipher[a976de373f2a83901fd24bc0e1846240ddb126a4fa8d502530dfd5ae15b373df] pktHash[a976de373f2a83901fd24bc0e1846240ddb126a4fa8d502530dfd5ae15b373df] equals?[TRUE]
+[2022-11-07 10:59:46:1446174][http-nio-8081-exec-10] INFO  c.w.a.controller.settlebankPayment - $$$### NOTI PARAM : {bizType=B0, mchtTrdNo=20221107104201, method=CA, trdAmt=1000, cardCd=BCC, billKey=SBILL_PGCAnxca_ks_gu20227353321107105946, mchtParam=comId=WOWNET, cardNo=496603******2221, trdNo=STFP_PGCAnxca_ks_gu0221107105946M1124341, mchtCustNm=진교덕, trdDtm=20221107105946, cardApprNo=99002751, pktHash=a976de373f2a83901fd24bc0e1846240ddb126a4fa8d502530dfd5ae15b373df, cardNm=IBK비씨체크, mchtCustId=12345678, pmtprdNm=테스트상품, outStatCd=0021, instmtMon=00, mchtId=nxca_ks_gu, comId=WOWNET, billKeyExpireDt=2501, email=kyodeock@gmail.com} ###$$$
+[2022-11-07 10:59:46:1446176][http-nio-8081-exec-9] INFO  com.wow.api.common.HttpClientUtil - [20221107104201][Response Code]200
+[2022-11-07 10:59:46:1446179][http-nio-8081-exec-9] INFO  com.wow.api.common.HttpClientUtil - [20221107104201][Response Data]{"params":{"mchtId":"nxca_ks_gu","ver":"0A17","method":"CA","bizType":"B0","encCd":"23","mchtTrdNo":"20221107104201","trdNo":"STFP_PGCAnxca_ks_gu0221107105946M1124341","trdDt":"20221107","trdTm":"105946","outStatCd":"0021","outRsltCd":"0000","outRsltMsg":"정상처리되었습니다"},"data":{"pktHash":"a976de373f2a83901fd24bc0e1846240ddb126a4fa8d502530dfd5ae15b373df","trdAmt":"AntV/eDpxIaKF0hJiePDKA==","instmtMon":"00","ninstmtTypeCd":"N","apprNo":"99002751","issrId":"BCC","cardNm":"비씨(페이북)","cardKind":"IBK비씨체크","billKey":"SBILL_PGCAnxca_ks_gu20227353321107105946","cardNo":"496603******2221","vldDtMon":"01","vldDtYear":"25"}}
+[2022-11-07 10:59:46:1446179][http-nio-8081-exec-9] INFO  com.wow.api.common.HttpClientUtil - [20221107104201][Response Data] byte length : 652
+[2022-11-07 10:59:46:1446179][http-nio-8081-exec-9] INFO  com.wow.api.common.HttpClientUtil - [20221107104201]=========================END SEND API=========================
+[2022-11-07 10:59:46:1446181][http-nio-8081-exec-9] INFO  c.w.a.controller.settlebankPayment - response body : {"pktHash":"a976de373f2a83901fd24bc0e1846240ddb126a4fa8d502530dfd5ae15b373df","trdAmt":"AntV/eDpxIaKF0hJiePDKA==","instmtMon":"00","ninstmtTypeCd":"N","apprNo":"99002751","issrId":"BCC","cardNm":"비씨(페이북)","cardKind":"IBK비씨체크","billKey":"SBILL_PGCAnxca_ks_gu20227353321107105946","cardNo":"496603******2221","vldDtMon":"01","vldDtYear":"25"}!!!
+[2022-11-07 10:59:46:1446181][http-nio-8081-exec-9] INFO  c.w.a.controller.settlebankPayment - aesCipher : AntV/eDpxIaKF0hJiePDKA==!!!
+[2022-11-07 10:59:46:1446182][http-nio-8081-exec-9] INFO  c.w.a.controller.settlebankPayment - [20221107104201][AES256 Decrypt] trdAmt[AntV/eDpxIaKF0hJiePDKA==] ---> [1000]
+[2022-11-07 10:59:46:1446182][http-nio-8081-exec-9] INFO  c.w.a.controller.settlebankPayment - $$$### respParam : {ninstmtTypeCd=N, trdDt=20221107, outRsltMsg=정상처리되었습니다, ver=0A17, bizType=B0, mchtTrdNo=20221107104201, method=CA, outRsltCd=0000, trdAmt=1000, trdTm=105946, trdNo=STFP_PGCAnxca_ks_gu0221107105946M1124341, pktHash=a976de373f2a83901fd24bc0e1846240ddb126a4fa8d502530dfd5ae15b373df, issrId=BCC, cardNm=비씨(페이북), apprNo=99002751, outStatCd=0021, instmtMon=00, mchtId=nxca_ks_gu, encCd=23} ###$$$
+[2022-11-07 10:59:46:1446182][http-nio-8081-exec-9] INFO  c.w.a.controller.settlebankPayment - [20221107104201][SHA256 HASING] Plain Text[002120221107105946nxca_ks_gu202211071042011000ST1009281328226982205] ---> Cipher Text[a976de373f2a83901fd24bc0e1846240ddb126a4fa8d502530dfd5ae15b373df]
+[2022-11-07 10:59:46:1446182][http-nio-8081-exec-9] INFO  c.w.a.controller.settlebankPayment - [20221107104201][SHA256 Hash Check] hashCipher[a976de373f2a83901fd24bc0e1846240ddb126a4fa8d502530dfd5ae15b373df] pktHash[a976de373f2a83901fd24bc0e1846240ddb126a4fa8d502530dfd5ae15b373df] equals?[TRUE]
+[2022-11-07 10:59:46:1446182][http-nio-8081-exec-9] INFO  c.w.a.controller.settlebankPayment - $$$### retMap : {rsltCd=0000, message=99002751, status=S} ###$$$
+[2022-11-07 10:59:46:1446182][http-nio-8081-exec-9] INFO  c.w.a.controller.settlebankPayment - ** payment End **
+[2022-11-07 10:59:46:1446184][http-nio-8081-exec-10] INFO  c.w.a.controller.settlebankPayment - [20221107104201][Result] OK
+[2022-11-07 10:59:56:1455897][http-nio-8081-exec-2] INFO  c.w.a.controller.settlebankPayment - ** payment Start **
+[2022-11-07 10:59:56:1455906][http-nio-8081-exec-2] INFO  jdbc.resultsettable - 
+|--------|
+|duplchk |
+|--------|
+|Y       |
+|--------|
+
+[2022-11-07 10:59:58:1457744][http-nio-8081-exec-3] INFO  c.w.a.controller.settlebankPayment - ** payment Start **
+[2022-11-07 10:59:58:1457755][http-nio-8081-exec-3] INFO  jdbc.resultsettable - 
+|--------|
+|duplchk |
+|--------|
+|Y       |
+|--------|
+
+[2022-11-07 10:59:59:1458312][http-nio-8081-exec-4] INFO  c.w.a.controller.settlebankPayment - ** payment Start **
+[2022-11-07 10:59:59:1458322][http-nio-8081-exec-4] INFO  jdbc.resultsettable - 
+|--------|
+|duplchk |
+|--------|
+|Y       |
+|--------|
+
+[2022-11-07 11:11:51:2170373][http-nio-8081-exec-6] INFO  c.w.a.controller.settlebankPayment - ** payment Start **
+[2022-11-07 11:11:51:2170385][http-nio-8081-exec-6] INFO  jdbc.resultsettable - 
+|--------|
+|duplchk |
+|--------|
+|Y       |
+|--------|
+
+[2022-11-07 11:12:35:2214424][RMI TCP Connection(46)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+[2022-11-07 11:12:36:2215347][RMI TCP Connection(46)-127.0.0.1] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8081"]
+[2022-11-07 11:12:36:2215347][RMI TCP Connection(46)-127.0.0.1] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+[2022-11-07 11:12:36:2215363][RMI TCP Connection(46)-127.0.0.1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Destroying Spring FrameworkServlet 'dispatcherServlet'
+[2022-11-07 11:12:36:2215370][RMI TCP Connection(46)-127.0.0.1] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8081"]
+[2022-11-07 11:12:36:2215373][RMI TCP Connection(46)-127.0.0.1] INFO  o.a.coyote.http11.Http11NioProtocol - Destroying ProtocolHandler ["http-nio-8081"]
+[2022-11-07 11:12:36:2215381][RMI TCP Connection(46)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+[2022-11-07 11:12:36:2215391][RMI TCP Connection(46)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+[2022-11-07 11:12:36:2215432][RMI TCP Connection(46)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+[2022-11-07 11:12:43:585][main] INFO  com.wow.api.WowApplication - Starting WowApplication using Java 1.8.0_275 on DESKTOP-68LF8MN with PID 185340 (D:\wownet\Spring_API_SVN\wow\target\classes started by wowcns in D:\wownet\Spring_API_SVN\wow)
+[2022-11-07 11:12:43:587][main] INFO  com.wow.api.WowApplication - No active profile set, falling back to 1 default profile: "default"
+[2022-11-07 11:12:43:1278][main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2022-11-07 11:12:43:1336][main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 50 ms. Found 2 JPA repository interfaces.
+[2022-11-07 11:12:44:1822][main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+[2022-11-07 11:12:44:1832][main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+[2022-11-07 11:12:44:1833][main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+[2022-11-07 11:12:44:1833][main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.68]
+[2022-11-07 11:12:44:2013][main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+[2022-11-07 11:12:44:2013][main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1382 ms
+[2022-11-07 11:12:44:2173][main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+[2022-11-07 11:12:45:2456][main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+[2022-11-07 11:12:45:2497][main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+[2022-11-07 11:12:45:2554][main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.12.Final
+[2022-11-07 11:12:45:2706][main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[2022-11-07 11:12:45:2841][main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
+[2022-11-07 11:12:46:3640][main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[2022-11-07 11:12:46:3727][main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2022-11-07 11:12:47:4884][main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+[2022-11-07 11:12:47:4904][main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+[2022-11-07 11:12:47:4905][main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+[2022-11-07 11:12:47:4920][main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+[2022-11-07 11:12:47:4929][main] INFO  s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+[2022-11-07 11:12:47:4946][main] INFO  com.wow.api.WowApplication - Started WowApplication in 4.725 seconds (JVM running for 6.589)
+[2022-11-07 11:13:18:35809][http-nio-8081-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2022-11-07 11:13:18:35809][http-nio-8081-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+[2022-11-07 11:13:18:35811][http-nio-8081-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+[2022-11-07 11:13:18:35835][http-nio-8081-exec-1] INFO  c.w.a.controller.settlebankPayment - ** payment Start **
+[2022-11-07 11:13:18:35892][http-nio-8081-exec-1] INFO  jdbc.resultsettable - 
+|--------|
+|duplchk |
+|--------|
+|Y       |
+|--------|
+
+[2022-11-07 11:15:34:171856][http-nio-8081-exec-3] INFO  c.w.a.controller.settlebankPayment - ** payment Start **
+[2022-11-07 11:15:34:171869][http-nio-8081-exec-3] INFO  jdbc.resultsettable - 
+|--------|
+|duplchk |
+|--------|
+|Y       |
+|--------|
+
+[2022-11-07 11:17:57:314467][RMI TCP Connection(13)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+[2022-11-07 11:17:57:315331][RMI TCP Connection(13)-127.0.0.1] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8081"]
+[2022-11-07 11:17:57:315331][RMI TCP Connection(13)-127.0.0.1] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+[2022-11-07 11:17:57:315332][RMI TCP Connection(13)-127.0.0.1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Destroying Spring FrameworkServlet 'dispatcherServlet'
+[2022-11-07 11:17:57:315336][RMI TCP Connection(13)-127.0.0.1] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8081"]
+[2022-11-07 11:17:57:315339][RMI TCP Connection(13)-127.0.0.1] INFO  o.a.coyote.http11.Http11NioProtocol - Destroying ProtocolHandler ["http-nio-8081"]
+[2022-11-07 11:17:57:315342][RMI TCP Connection(13)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+[2022-11-07 11:17:57:315344][RMI TCP Connection(13)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+[2022-11-07 11:17:58:315382][RMI TCP Connection(13)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

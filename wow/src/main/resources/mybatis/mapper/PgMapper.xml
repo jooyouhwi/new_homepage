@@ -1,0 +1,869 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.wow.api.dao.PgMapper">
+	<!-- PG 정보 로드 -->
+	<select id="getWowConfigPGInfo" parameterType="HashMap" resultType="com.wow.api.model.PgModel">
+		/* getWowConfigPgInfo */
+		SELECT Com_ID				AS comId
+		     , Com_Name				AS comName
+		     <if test="vendor != null and vendor != ''">
+		     <if test="vendor == '1'">
+		     , Pg_Vendor			AS pgVendor
+		     <!-- , Pg_Bank_Key			AS pgBankKey
+		     , Pg_Bank_Mid			AS pgBankMid
+		     , Pg_Bank_Aes_Key		AS pgBankAesKey -->
+		     , Pg_Card_Key			AS pgCardKey
+		     , Pg_Card_Mid			AS pgCardMid
+		     , Pg_Card_Aes_Key		AS pgCardAesKey
+		     , Pg_Vbank_Key			AS pgVbankKey
+		     , Pg_Vbank_Mid			AS pgVbankMid
+		     , Pg_Vbank_Aes_Key		AS pgVbankAesKey
+		     </if>
+		     <if test="vendor == '2'">
+		     , Pg_2_Vendor			AS pgVendor
+		     <!-- , Pg_2_Bank_Key		AS pgBankKey
+		     , Pg_2_Bank_Mid		AS pgBankMid
+		     , Pg_2_Bank_Aes_Key	AS pgBankAesKey -->
+		     , Pg_2_Card_Key		AS pgCardKey
+		     , Pg_2_Card_Mid		AS pgCardMid
+		     , Pg_2_Card_Aes_Key	AS pgCardAesKey
+		     , Pg_2_Vbank_Key		AS pgVbankKey
+		     , Pg_2_Vbank_Mid		AS pgVbankMid
+		     , Pg_2_Vbank_Aes_Key	AS pgVbankAesKey
+		     </if>
+		     </if>
+		     <if test="vendor == null or vendor == ''">
+		     , Pg_Vendor			AS pgVendor
+		     <!-- , Pg_Bank_Key			AS pgBankKey
+		     , Pg_Bank_Mid			AS pgBankMid
+		     , Pg_Bank_Aes_Key		AS pgBankAesKey -->
+		     , Pg_Card_Key			AS pgCardKey
+		     , Pg_Card_Mid			AS pgCardMid
+		     , Pg_Card_Aes_Key		AS pgCardAesKey
+		     , Pg_Vbank_Key			AS pgVbankKey
+		     , Pg_Vbank_Mid			AS pgVbankMid
+		     , Pg_Vbank_Aes_Key		AS pgVbankAesKey
+		     </if>
+		     , Com_Url				AS vaccNotiUrl
+		  FROM Api_Company
+		 WHERE Com_ID = #{comId}
+	</select>
+
+	<!-- 세틀뱅크 카드 결제 중복 체크 -->
+	<select id="getSettleCardDuplChk" parameterType="HashMap" resultType="com.wow.api.model.PgModel">
+		/* getSettleCardDuplChk */
+		SELECT DECODE(COUNT(1),0,'N','Y') AS duplChk
+		  FROM Pg_Settlebank_New
+		 WHERE Com_ID = #{comId}
+		   AND Mcht_Trd_NO = #{mchtTrdNo}
+		   AND Status = '1'
+		   AND Out_Stat_CD = '0021'
+		   AND Out_Rslt_CD = '0000'
+	</select>
+
+	<!-- 세틀뱅크 카드결제 로그 저장 -->
+	<insert id="insertSettleCardLog" parameterType="HashMap">
+		/* insertSettleCardLog */
+		INSERT INTO Pg_Settlebank_New ( Seq
+		                              , Com_ID
+		                              , Pay_Type
+		                              <if test="status != null and status != ''">
+		                              , Status
+		                              </if>
+		                              <if test="mchtId != null and mchtId != ''">
+		                              , Mcht_ID
+		                              </if>
+		                              <if test="bizType != null and bizType != ''">
+		                              , Biz_Type
+		                              </if>
+		                              <if test="mchtTrdNo != null and mchtTrdNo != ''">
+		                              , Mcht_Trd_NO
+		                              </if>
+		                              <if test="trdDt != null and trdDt != ''">
+		                              , Trd_Dtm
+		                              </if>
+		                              <if test="pktHash != null and pktHash != ''">
+		                              , Pkt_Hash
+		                              </if>
+		                              <if test="pmtprdNm != null and pmtprdNm != ''">
+		                              , Pmtprd_NM
+		                              </if>
+		                              <if test="mchtCustNm != null and mchtCustNm != ''">
+		                              , Mcht_Cust_NM
+		                              </if>
+		                              <if test="mchtCustId != null and mchtCustId != ''">
+		                              , Mcht_Cust_ID
+		                              </if>
+		                              , Email
+		                              <if test="cardNo != null and cardNo != ''">
+		                              , Card_NO
+		                              </if>
+		                              <if test="vldDtMon != null and vldDtMon != ''">
+		                              , Vld_Dt_Mon
+		                              </if>
+		                              <if test="vldDtYear != null and vldDtYear != ''">
+		                              , Vld_Dt_Year
+		                              </if>
+		                              <if test="idntNo != null and idntNo != ''">
+		                              , Idnt_NO
+		                              </if>
+		                              <if test="cardPwd != null and cardPwd != ''">
+		                              , Card_Pwd
+		                              </if>
+		                              <if test="instmtMon != null and instmtMon != ''">
+		                              , Instmt_Mon
+		                              </if>
+		                              <if test="trdAmt != null and trdAmt != ''">
+		                              , Trd_Amt
+		                              </if>
+		                              <if test="notiUrl != null and notiUrl != ''">
+		                              , Noti_Url
+		                              </if>
+		                              <if test="mchtParam != null and mchtParam != ''">
+		                              , Mcht_Param
+		                              </if>
+		                              , Remark
+		                              , Work_Date
+		                              , Work_User ) VALUES ( Seq_PG.NEXTVAL
+		                                                   , #{comId}
+		                                                   <if test="payType != null and payType != ''">
+		                                                   , #{payType}
+		                                                   </if>
+		                                                   <if test="payType == null or payType == ''">
+		                                                   , 'W'
+		                                                   </if>
+		                                                   <if test="status != null and status != ''">
+		                                                   , #{status}
+		                                                   </if>
+		                                                   <if test="mchtId != null and mchtId != ''">
+		                                                   , #{mchtId}
+		                                                   </if>
+		                                                   <if test="bizType != null and bizType != ''">
+		                                                   , #{bizType}
+		                                                   </if>
+		                                                   <if test="mchtTrdNo != null and mchtTrdNo != ''">
+		                                                   , #{mchtTrdNo}
+		                                                   </if>
+		                                                   <if test="trdDt != null and trdDt != ''">
+		                                                   , #{trdDt}||#{trdTm}
+		                                                   </if>
+		                                                   <if test="pktHash != null and pktHash != ''">
+		                                                   , #{pktHash}
+		                                                   </if>
+		                                                   <if test="pmtPrdNm != null and pmtPrdNm != ''">
+		                                                   , #{pmtprdNm}
+		                                                   </if>
+		                                                   <if test="mchtCustNm != null and mchtCustNm != ''">
+		                                                   , #{mchtCustNm}
+		                                                   </if>
+		                                                   <if test="mchtCustId != null and mchtCustId != ''">
+		                                                   , #{mchtCustId}
+		                                                   </if>
+		                                                   <if test="email != null and email != ''">
+		                                                   , #{email}
+		                                                   </if>
+		                                                   <if test="email == null or email == ''">
+		                                                   , ''
+		                                                   </if>
+		                                                   <if test="cardNo != null and cardNo != ''">
+		                                                   , #{cardNo}
+		                                                   </if>
+		                                                   <if test="vldDtMon != null and vldDtMon != ''">
+		                                                   , #{vldDtMon}
+		                                                   </if>
+		                                                   <if test="vldDtYear != null and vldDtYear != ''">
+		                                                   , #{vldDtYear}
+		                                                   </if>
+		                                                   <if test="idntNo != null and idntNo != ''">
+		                                                   , #{idntNo}
+		                                                   </if>
+		                                                   <if test="cardPwd != null and cardPwd != ''">
+		                                                   , #{cardPwd}
+		                                                   </if>
+		                                                   <if test="instmtMon != null and instmtMon != ''">
+		                                                   , #{instmtMon}
+		                                                   </if>
+		                                                   <if test="trdAmt != null and trdAmt != ''">
+		                                                   , #{trdAmt}
+		                                                   </if>
+		                                                   <if test="notiUrl != null and notiUrl != ''">
+		                                                   , #{notiUrl}
+		                                                   </if>
+		                                                   <if test="mchtParam != null and mchtParam != ''">
+		                                                   , #{mchtParam}
+		                                                   </if>
+		                                                   <if test="remark != null and remark != ''">
+		                                                   , #{remark}
+		                                                   </if>
+		                                                   <if test="remark == null or remark == ''">
+		                                                   , ''
+		                                                   </if>
+		                                                   , SYSDATE
+		                                                   <if test="mchtCustId != null and mchtCustId != ''">
+		                                                   , #{mchtCustId}
+		                                                   </if>
+		                                                   <if test="mchtCustId == null or mchtCustId == ''">
+		                                                   , 'ADMIN'
+		                                                   </if>
+		                                                   )
+	</insert>
+	
+	<!-- 세틀뱅크 카드결제 로그 결제 결과리턴 값 저장 -->
+	<update id="updateSettleCardResLog" parameterType="HashMap">
+		/* updateSettleCardLog */
+		UPDATE Pg_Settlebank_New
+		   SET Status				= #{status}
+		     <if test="trdNo != null and trdNo != ''">
+		     , Trd_NO				= #{trdNo}
+		     </if>
+		     <if test="outStatCd != null and outStatCd != ''">
+		     , Out_Stat_CD			= #{outStatCd}
+		     </if>
+		     <if test="outRsltCd != null and outRsltCd != ''">
+		     , Out_Rslt_CD			= #{outRsltCd}
+		     </if>
+		     <if test="outRsltMsg != null and outRsltMsg != ''">
+		     , Out_Rslt_Msg			= #{outRsltMsg}
+		     </if>
+		     <if test="pktHash != null and pktHash != ''">
+		     , Re_Pkt_Hash			= #{pktHash}
+		     </if>
+		     <if test="trdAmt != null and trdAmt != ''">
+		     , Re_Trd_Amt			= #{trdAmt}
+		     </if>
+		     <if test="issrId != null and issrId != ''">
+		     , Re_Issr_ID			= #{issrId}
+		     </if>
+		     <if test="cardNm != null and cardNm != ''">
+		     , Re_Card_NM			= #{cardNm}
+		     </if>
+		     <if test="cardKind != null and cardKind != ''">
+		     , Re_Card_Kind			= #{cardKind}
+		     </if>
+		     <if test="ninstmtTypeCd != null and ninstmtTypeCd != ''">
+		     , Re_Ninstmt_Type_CD	= #{ninstmtTypeCd}
+		     </if>
+		     <if test="instmtMon != null and instmtMon != ''">
+		     , Re_Instmt_Mon		= #{instmtMon}
+		     </if>
+		     <if test="apprNo != null and apprNo != ''">
+		     , Re_Appr_NO			= #{apprNo}
+		     </if>
+		     <if test="remark != null and remark != ''">
+		     , Remark				= #{remark}
+		     </if>
+		 WHERE Com_ID				= #{comId}
+		   AND Mcht_Trd_NO			= #{mchtTrdNo}
+	</update>
+	
+	<!-- 세틀뱅크 카드결제 로그 결제 결과 NOTI 값 저장 -->
+	<update id="updateSettleCardNotiLog" parameterType="HashMap">
+		/* updateSettleCardNotiLog */
+		UPDATE Pg_Settlebank_New
+		   SET Noti_Out_Stat_CD			= #{outStatCd}
+		     , Noti_Mcht_Trd_NO			= #{mchtTrdNo}
+		     , Noti_Trd_Amt				= #{trdAmt}
+		     , Noti_Card_CD				= #{cardCd}
+		     , Noti_Bill_Key			= #{billKey}
+		     , Noti_Bill_Key_Expire_DT	= #{billKeyExpireDt}
+		     , Noti_Mcht_Param			= #{mchtParam}
+		     , Noti_Trd_NO				= #{trdNo}
+		     , Noti_Trd_Dtm				= #{trdDtm}
+		     , Noti_Card_Appr_NO		= #{cardApprNo}
+		     , Noti_Pkt_Hash			= #{pktHash}
+		     , Noti_Card_NM				= #{cardNm}
+		     , Noti_Pmtprd_NM			= #{pmtprdNm}
+		     , Noti_Instmt_Mon			= #{instmtMon}
+		     <if test="remark != null and remark != ''">
+		     , Remark					= #{remark}
+		     </if>
+		 WHERE Com_ID					= #{comId}
+		   AND Mcht_Trd_NO				= #{mchtTrdNo}
+	</update>
+	
+	<select id="getSettleVbankDuplChk" parameterType="HashMap" resultType="com.wow.api.model.PgModel">
+		/* getSettleVbankDuplChk */
+		SELECT DECODE(COUNT(1),0,'N','Y') AS duplChk
+		  FROM Pg_Settlebank_New_Vbank
+		 WHERE Com_ID = #{comId}
+		   AND Mcht_Trd_NO = #{mchtTrdNo}
+		   AND Status IN ('0','1')
+		   AND Re_Out_Stat_CD IN ('0051','0021')
+		   AND Re_Out_Rslt_CD = '0000'
+	</select>
+	
+	<!-- 세틀뱅크 가상계좌채번 로그 저장 -->
+	<insert id="insertSettleVbankLog" parameterType="HashMap">
+		/* insertSettleVbankLog */
+		INSERT INTO Pg_Settlebank_New_Vbank ( Seq
+		                                    <if test="comId != null and comId != ''">
+		                                    , Com_ID
+		                                    </if>
+		                                    <if test="status != null and status != ''">
+		                                    , Status
+		                                    </if>
+		                                    <if test="mchtId != null and mchtId != ''">
+		                                    , Mcht_ID
+		                                    </if>
+		                                    <if test="ver != null and ver != ''">
+		                                    , Ver
+		                                    </if>
+		                                    <if test="method != null and method != ''">
+		                                    , Method
+		                                    </if>
+		                                    <if test="bizType != null and bizType != ''">
+		                                    , Biz_Type
+		                                    </if>
+		                                    <if test="encCd != null and encCd != ''">
+		                                    , Enc_CD
+		                                    </if>
+		                                    <if test="mchtTrdNo != null and mchtTrdNo != ''">
+		                                    , Mcht_Trd_NO
+		                                    </if>
+		                                    <if test="trdDt != null and trdDt != ''">
+		                                    , Trd_DT
+		                                    </if>
+		                                    <if test="trdTm != null and trdTm != ''">
+		                                    , Trd_TM
+		                                    </if>
+		                                    <if test="mobileYn != null and mobileYn != ''">
+		                                    , Mobile_YN
+		                                    </if>
+		                                    <if test="osType != null and osType != ''">
+		                                    , Os_Type
+		                                    </if>
+		                                    <if test="bankCd != null and bankCd != ''">
+		                                    , Bank_CD
+		                                    </if>
+		                                    <if test="pktHash != null and pktHash != ''">
+		                                    , Pkt_Hash
+		                                    </if>
+		                                    <if test="vAcntNo != null and vAcntNo != ''">
+		                                    , V_Acnt_NO
+		                                    </if>
+		                                    <if test="expireDate != null and expireDate != ''">
+		                                    , Expire_Date
+		                                    </if>
+		                                    <if test="prdtNm != null and prdtNm != ''">
+		                                    , Prdt_NM
+		                                    </if>
+		                                    <if test="sellerNm != null and sellerNm != ''">
+		                                    , Seller_NM
+		                                    </if>
+		                                    <if test="ordNm != null and ordNm != ''">
+		                                    , Ord_NM
+		                                    </if>
+		                                    <if test="trdAmt != null and trdAmt != ''">
+		                                    , Trd_Amt
+		                                    </if>
+		                                    <if test="acntType != null and acntType != ''">
+		                                    , Acnt_Type
+		                                    </if>
+		                                    <if test="dpstrNm != null and dpstrNm != ''">
+		                                    , Dpstr_NM
+		                                    </if>
+		                                    <if test="mchtCustNm != null and mchtCustNm != ''">
+		                                    , Mcht_Cust_NM
+		                                    </if>
+		                                    <if test="taxTypeCd != null and taxTypeCd != ''">
+		                                    , Tax_Type_CD
+		                                    </if>
+		                                    <if test="taxAmt != null and taxAmt != ''">
+		                                    , Tax_Amt
+		                                    </if>
+		                                    <if test="vatAmt != null and vatAmt != ''">
+		                                    , Vat_Amt
+		                                    </if>
+		                                    <if test="taxFreeAmt != null and taxFreeAmt != ''">
+		                                    , Tax_Free_Amt
+		                                    </if>
+		                                    <if test="escrAgrYn != null and escrAgrYn != ''">
+		                                    , Escragr_YN
+		                                    </if>
+		                                    <if test="escrPwd != null and escrPwd != ''">
+		                                    , Escr_Pwd
+		                                    </if>
+		                                    <if test="rfdDpstrNm != null and rfdDpstrNm != ''">
+		                                    , Rfd_Dpstr_NM
+		                                    </if>
+		                                    <if test="csrcIssReqYn != null and csrcIssReqYn != ''">
+		                                    , Csrciss_Req_YN
+		                                    </if>
+		                                    <if test="cashRcptPrposDivCd != null and cashRcptPrposDivCd != ''">
+		                                    , Cash_Rcpt_Prpos_Div_CD
+		                                    </if>
+		                                    <if test="csrcRegNoDivCd != null and csrcRegNoDivCd != ''">
+		                                    , Csrc_Reg_No_Div_CD
+		                                    </if>
+		                                    <if test="csrcRegNo != null and csrcRegNo != ''">
+		                                    , Csrc_Reg_NO
+		                                    </if>
+		                                    <if test="email != null and email != ''">
+		                                    , Email
+		                                    </if>
+		                                    <if test="notiUrl != null and notiUrl != ''">
+		                                    , Noti_Url
+		                                    </if>
+		                                    <if test="mchtParam != null and mchtParam != ''">
+		                                    , Mcht_Param
+		                                    </if>
+		                                    <if test="mchtCustId != null and mchtCustId != ''">
+		                                    , Mcht_Custid
+		                                    </if>
+		                                    , Work_Kind
+		                                    , Work_Date
+		                                    , Work_User ) VALUES ( Seq_PG.NEXTVAL
+		                                                         <if test="comId != null and comId != ''">
+		                                                         , #{comId}
+		                                                         </if>
+		                                                         <if test="status != null and status != ''">
+		                                                         , #{status}
+		                                                         </if>
+		                                                         <if test="mchtId != null and mchtId != ''">
+		                                                         , #{mchtId}
+		                                                         </if>
+		                                                         <if test="ver != null and ver != ''">
+		                                                         , #{ver}
+		                                                         </if>
+		                                                         <if test="method != null and method != ''">
+		                                                         , #{method}
+		                                                         </if>
+		                                                         <if test="bizType != null and bizType != ''">
+		                                                         , #{bizType}
+		                                                         </if>
+		                                                         <if test="encCd != null and encCd != ''">
+		                                                         , #{encCd}
+		                                                         </if>
+		                                                         <if test="mchtTrdNo != null and mchtTrdNo != ''">
+		                                                         , #{mchtTrdNo}
+		                                                         </if>
+		                                                         <if test="trdDt != null and trdDt != ''">
+		                                                         , #{trdDt}
+		                                                         </if>
+		                                                         <if test="trdTm != null and trdTm != ''">
+		                                                         , #{trdTm}
+		                                                         </if>
+		                                                         <if test="mobileYn != null and mobileYn != ''">
+		                                                         , #{mobileYn}
+		                                                         </if>
+		                                                         <if test="osType != null and osType != ''">
+		                                                         , #{osType}
+		                                                         </if>
+		                                                         <if test="bankCd != null and bankCd != ''">
+		                                                         , #{bankCd}
+		                                                         </if>
+		                                                         <if test="pktHash != null and pktHash != ''">
+		                                                         , #{pktHash}
+		                                                         </if>
+		                                                         <if test="vAcntNo != null and vAcntNo != ''">
+		                                                         , #{vAcntNo}
+		                                                         </if>
+		                                                         <if test="expireDate != null and expireDate != ''">
+		                                                         , #{expireDate}
+		                                                         </if>
+		                                                         <if test="prdtNm != null and prdtNm != ''">
+		                                                         , #{prdtNm}
+		                                                         </if>
+		                                                         <if test="sellerNm != null and sellerNm != ''">
+		                                                         , #{sellerNm}
+		                                                         </if>
+		                                                         <if test="ordNm != null and ordNm != ''">
+		                                                         , #{ordNm}
+		                                                         </if>
+		                                                         <if test="trdAmt != null and trdAmt != ''">
+		                                                         , #{trdAmt}
+		                                                         </if>
+		                                                         <if test="acntType != null and acntType != ''">
+		                                                         , #{acntType}
+		                                                         </if>
+		                                                         <if test="dpstrNm != null and dpstrNm != ''">
+		                                                         , #{dpstrNm}
+		                                                         </if>
+		                                                         <if test="mchtCustNm != null and mchtCustNm != ''">
+		                                                         , #{mchtCustNm}
+		                                                         </if>
+		                                                         <if test="taxTypeCd != null and taxTypeCd != ''">
+		                                                         , #{taxTypeCd}
+		                                                         </if>
+		                                                         <if test="taxAmt != null and taxAmt != ''">
+		                                                         , #{taxAmt}
+		                                                         </if>
+		                                                         <if test="vatAmt != null and vatAmt != ''">
+		                                                         , #{vatAmt}
+		                                                         </if>
+		                                                         <if test="taxFreeAmt != null and taxFreeAmt != ''">
+		                                                         , #{taxFreeAmt}
+		                                                         </if>
+		                                                         <if test="escrAgrYn != null and escrAgrYn != ''">
+		                                                         , #{escrAgrYn}
+		                                                         </if>
+		                                                         <if test="escrPwd != null and escrPwd != ''">
+		                                                         , #{escrPwd}
+		                                                         </if>
+		                                                         <if test="rfdDpstrNm != null and rfdDpstrNm != ''">
+		                                                         , #{rfdDpstrNm}
+		                                                         </if>
+		                                                         <if test="csrcIssReqYn != null and csrsIssReqYn != ''">
+		                                                         , #{csrcIssReqYn}
+		                                                         </if>
+		                                                         <if test="cashRcptPrposDivCd != null and cashRcptPrposDivCd != ''">
+		                                                         , #{cashRcptPrposDivCd}
+		                                                         </if>
+		                                                         <if test="csrcRegNoDivCd != null and csrcRegNoDivCd != ''">
+		                                                         , #{csrcRegNoDivCd}
+		                                                         </if>
+		                                                         <if test="csrcRegNo != null and csrcRegNo != ''">
+		                                                         , #{csrcRegNo}
+		                                                         </if>
+		                                                         <if test="email != null and email != ''">
+		                                                         , #{email}
+		                                                         </if>
+		                                                         <if test="notiUrl != null and notiUrl != ''">
+		                                                         , #{notiUrl}
+		                                                         </if>
+		                                                         <if test="mchtParam != null and mchtParam != ''">
+		                                                         , #{mchtParam}
+		                                                         </if>
+		                                                         <if test="mchtCustId != null and mchtCustId != ''">
+		                                                         , #{mchtCustId}
+		                                                         </if>
+		                                                         <if test="payType != null and payType != ''">
+		                                                         , #{payType}
+		                                                         </if>
+		                                                         <if test="payType == null or payType == ''">
+		                                                         , 'W'
+		                                                         </if>
+		                                                         , SYSDATE
+		                                                         <if test="mchtCustId != null and mchtCustId != ''">
+		                                                         , #{mchtCustId}
+		                                                         </if>
+		                                                         <if test="mchtCustId == null or mchtCustId == ''">
+		                                                         , 'ADMIN'
+		                                                         </if> )
+	</insert>
+	
+	<!-- 세틀뱅크 가상계좌채번 로그 수정 -->
+	<update id="updateSettleVbankResLog" parameterType="HashMap">
+		/* updateSettleVbankResLog */
+		UPDATE Pg_Settlebank_New_Vbank
+		   SET Re_Mcht_ID		= #{mchtId}
+		     <if test="ver != null and ver != ''">
+		     , Re_Ver			= #{ver}
+		     </if>
+		     <if test="method != null and method != ''">
+		     , Re_Method		= #{method}
+		     </if>
+		     <if test="bizType != null and bizType != ''">
+		     , Re_Biz_Type		= #{bizType}
+		     </if>
+		     <if test="encCd != null and encCd != ''">
+		     , Re_Enc_CD		= #{encCd}
+		     </if>
+		     <if test="mchtTrdNo != null and mchtTrdNo != ''">
+		     , Re_Mcht_Trd_NO	= #{mchtTrdNo}
+		     </if>
+		     <if test="trdNo != null and trdNo != ''">
+		     , Re_Trd_NO		= #{trdNo}
+		     </if>
+		     <if test="trdDt != null and trdDt != ''">
+		     , Re_Trd_DT		= #{trdDt}
+		     </if>
+		     <if test="trdTm != null and trdTm != ''">
+		     , Re_Trd_TM		= #{trdTm}
+		     </if>
+		     <if test="outStatCd != null and outStatCd != ''">
+		     , Re_Out_Stat_CD	= #{outStatCd}
+		     </if>
+		     <if test="outRsltCd != null and outRsltCd != ''">
+		     , Re_Out_Rslt_CD	= #{outRsltCd}
+		     </if>
+		     <if test="outRsltMsg != null and outRsltMsg != ''">
+		     , Re_Out_Rslt_Msg	= #{outRsltMsg}
+		     </if>
+		     <if test="pktHash != null and pktHash != ''">
+		     , Re_Pkt_Hash		= #{pktHash}
+		     </if>
+		     <if test="bankCd != null and bankCd != ''">
+		     , Re_Bank_CD		= #{bankCd}
+		     </if>
+		     <if test="vAcntNo != null and vAcntNo != ''">
+		     , Re_Vacnt_NO		= #{vAcntNo}
+		     </if>
+		     <if test="expireDate != null and expireDate != ''">
+		     , Re_Expire_Date	= #{expireDate}
+		     </if>
+		     <if test="trdAmt != null and trdAmt != ''">
+		     , Re_Trd_Amt		= #{trdAmt}
+		     </if>
+		     <if test="acntType != null and acntType != ''">
+		     , Re_Acnt_Type		= #{acntType}
+		     </if>
+		     <if test="remark != null and remark != ''">
+		     , Remark			= #{remark}
+		     </if>
+		     , Work_Date		= SYSDATE
+		 WHERE Com_ID			= #{comId}
+		   AND Mcht_Trd_NO		= #{mchtTrdNo}
+	</update>
+	
+	<!-- 세틀뱅크 가상계좌노티 로그 저장 -->
+	<insert id="insertSettleVbankNotiLog" parameterType="HashMap">
+		/* insertSettleVbankNotiLog */
+		INSERT INTO Pg_Settlebank_New_Vbank_Noti ( Seq
+		                                         , Com_ID
+		                                         <if test="outStatCd != null and outStatCd != ''">
+		                                         , Out_Statcd
+		                                         </if>
+		                                         <if test="trdNo != null and trdNo != ''">
+		                                         , Trd_NO
+		                                         </if>
+		                                         <if test="method != null and method != ''">
+		                                         , Method
+		                                         </if>
+		                                         <if test="bizType != null and bizType != ''">
+		                                         , Biz_Type
+		                                         </if>
+		                                         <if test="mchtId != null and mchtId != ''">
+		                                         , Mcht_ID
+		                                         </if>
+		                                         <if test="mchtTrdNo != null and mchtTrdNo != ''">
+		                                         , Mcht_Trd_NO
+		                                         </if>
+		                                         <if test="mchtCustNm != null and mchtCustNm != ''">
+		                                         , Mcht_Cust_NM
+		                                         </if>
+		                                         <if test="mchtName != null and mchtName != ''">
+		                                         , Mcht_Name
+		                                         </if>
+		                                         <if test="prdtNm != null and prdtNm != ''">
+		                                         , Pmtprd_NM
+		                                         </if>
+		                                         <if test="trdDtm != null and trdDtm != ''">
+		                                         , Trd_Dtm
+		                                         </if>
+		                                         <if test="trdAmt != null and trdAmt != ''">
+		                                         , Trd_Amt
+		                                         </if>
+		                                         <if test="bankCd != null and bankCd != ''">
+		                                         , Bank_CD
+		                                         </if>
+		                                         <if test="bankNm != null and bankNm != ''">
+		                                         , Bank_NM
+		                                         </if>
+		                                         <if test="vAcntNo != null and vAcntNo != ''">
+		                                         , Vacnt_NO
+		                                         </if>
+		                                         <if test="expireDt != null and expireDt != ''">
+		                                         , Expire_DT
+		                                         </if>
+		                                         <if test="AcntPrintNm != null and AcntPrintNm != ''">
+		                                         , Acnt_Print_NM
+		                                         </if>
+		                                         <if test="dpstrNm != null and dpstrNm != ''">
+		                                         , Dpstr_NM
+		                                         </if>
+		                                         <if test="mchtCustId != null and mchtCustId != ''">
+		                                         , Mcht_Cust_ID
+		                                         </if>
+		                                         <if test="csrcIssNo != null and csrcIssNo != ''">
+		                                         , Csrciss_NO
+		                                         </if>
+		                                         <if test="mchtParam != null and mchtParam != ''">
+		                                         , Mcht_Param
+		                                         </if>
+		                                         <if test="pktHash != null and pktHash != ''">
+		                                         , Pkt_Hash
+		                                         </if>
+		                                         , Work_Kind
+		                                         , Work_Date
+		                                         , Work_User ) VALUES ( Seq_PG.NEXTVAL
+		                                                              , #{comId}
+		                                                              <if test="outStatCd != null and outStatCd != ''">
+		                                                              , #{outStatCd}
+		                                                              </if>
+		                                                              <if test="trdNo != null and trdNo != ''">
+		                                                              , #{trdNo}
+		                                                              </if>
+		                                                              <if test="method != null and method != ''">
+		                                                              , #{method}
+		                                                              </if>
+		                                                              <if test="bizType != null and bizType != ''">
+		                                                              , #{bizType}
+		                                                              </if>
+		                                                              <if test="mchtId != null and mchtId != ''">
+		                                                              , #{mchtId}
+		                                                              </if>
+		                                                              <if test="mchtTrdNo != null and mchtTrdNo != ''">
+		                                                              , #{mchtTrdNo}
+		                                                              </if>
+		                                                              <if test="mchtCustNm != null and mchtCustNm != ''">
+		                                                              , #{mchtCustNm}
+		                                                              </if>
+		                                                              <if test="mchtName != null and mchtName != ''">
+		                                                              , #{mchtName}
+		                                                              </if>
+		                                                              <if test="prdtNm != null and prdtNm != ''">
+		                                                              , #{pmtprdNm}
+		                                                              </if>
+		                                                              <if test="trdDtm != null and trdDtm != ''">
+		                                                              , #{trdDtm}
+		                                                              </if>
+		                                                              <if test="trdAmt != null and trdAmt != ''">
+		                                                              , #{trdAmt}
+		                                                              </if>
+		                                                              <if test="bankCd != null and bankCd != ''">
+		                                                              , #{bankCd}
+		                                                              </if>
+		                                                              <if test="bankNm != null and bankNm != ''">
+		                                                              , #{bankNm}
+		                                                              </if>
+		                                                              <if test="vAcntNo != null and vAcntNo != ''">
+		                                                              , #{vAcntNo}
+		                                                              </if>
+		                                                              <if test="expireDt != null and expireDt != ''">
+		                                                              , #{expireDt}
+		                                                              </if>
+		                                                              <if test="AcntPrintNm != null and AcntPrintNm != ''">
+		                                                              , #{AcntPrintNm}
+		                                                              </if>
+		                                                              <if test="dpstrNm != null and dpstrNm != ''">
+		                                                              , #{dpstrNm}
+		                                                              </if>
+		                                                              <if test="mchtCustId != null and mchtCustId != ''">
+		                                                              , #{mchtCustId}
+		                                                              </if>
+		                                                              <if test="csrcIssNo != null and csrcIssNo != ''">
+		                                                              , #{csrcIssNo}
+		                                                              </if>
+		                                                              , #{mchtParam}
+		                                                              , #{pktHash}
+		                                                              <if test="payType != null and payType != ''">
+		                                                              , #{payType}
+		                                                              </if>
+		                                                              <if test="payType == null or payType == ''">
+		                                                              , 'W'
+		                                                              </if>
+		                                                              , SYSDATE
+		                                                              <if test="mchtCustId != null and mchtCustId != ''">
+		                                                              , #{mchtCustId}
+		                                                              </if>
+		                                                              <if test="mchtCustId == null or mchtCustId == ''">
+		                                                              , 'ADMIN'
+		                                                              </if>
+		                                                              )
+	</insert>
+	
+	<!-- 세틀뱅크 가상계좌노티 로그 수정 -->
+	<update id="updateSettleVbankNotiLog" parameterType="HashMap">
+		/* updateSettleVbankNotiLog */
+	</update>
+	
+	<!-- 세틀뱅크 중복 취소 시도 체크 -->
+	<select id="getSettleCancelDuplChk" parameterType="HashMap" resultType="com.wow.api.model.PgModel">
+		/* getSettleCancelInfo */
+		SELECT DECODE(COUNT(1),0,'N','Y') AS duplChk
+		  FROM Pg_Settlebank_Cancel
+		 WHERE Com_ID = #{comId}
+		   AND Mchttrdno = #{mchtTrdNo}
+		   AND Status = '1'
+		   AND Re_Outrsltcd = '0000'
+	</select>
+	
+	<!-- 세틀뱅크 결제 취소 정보 로드 -->
+	<select id="getSettleCancelInfo" parameterType="HashMap" resultType="HashMap">
+		/* getSettleCancelInfo */
+		SELECT Trd_NO	AS orgTrdNo
+		     , Trd_Amt	AS cnclAmt
+		  FROM Pg_Settlebank_New
+		 WHERE Com_ID = #{comId}
+		   AND Mcht_Trd_NO = #{mchtTrdNo}
+		   AND Status = '1'
+		   AND Out_Stat_CD = '0021'
+		   AND Out_Rslt_CD = '0000'
+	</select>
+	
+	<!-- 세틀뱅크 결제취소 로그 저장 -->
+	<insert id="insertSettleCancelLog" parameterType="HashMap">
+		/* insertSettleCancelLog */
+		INSERT INTO Pg_Settlebank_Cancel ( Seq
+		                                 , Com_ID
+		                                 <if test="status != null and status != ''">
+		                                 , Status
+		                                 </if>
+		                                 <if test="kind != null and kind != ''">
+		                                 , Kind
+		                                 </if>
+		                                 <if test="mchtId != null and mchtId != ''">
+		                                 , Mcht_ID
+		                                 </if>
+		                                 <if test="mchtTrdNo != null and mchtTrdNo != ''">
+		                                 , Mcht_Trd_NO
+		                                 </if>
+		                                 <if test="trdDt != null and trdDt != ''">
+		                                 , Trd_DT
+		                                 </if>
+		                                 <if test="trdTm != null and trdTm != ''">
+		                                 , Trd_TM
+		                                 </if>
+		                                 <if test="orgTrdNo != null and orgTrdNo != ''">
+		                                 , Org_Trd_NO
+		                                 </if>
+		                                 <if test="cnclAmt != null and cnclAmt != ''">
+		                                 , Cncl_Amt
+		                                 </if>
+		                                 <if test="remark != null and remark != ''">
+		                                 , Remark
+		                                 </if>
+		                                 , Work_Date
+		                                 , Work_User
+		                                 ) VALUES ( Seq_PG.NEXTVAL
+		                                          , #{comId}
+		                                          <if test="status != null and status != ''">
+		                                          , #{status}
+		                                          </if>
+		                                          <if test="kind != null and kind != ''">
+		                                          , #{kind}
+		                                          </if>
+		                                          <if test="mchtId != null and mchtId != ''">
+		                                          , #{mchtId}
+		                                          </if>
+		                                          <if test="mchtTrdNo != null and mchtTrdNo != ''">
+		                                          , #{mchtTrdNo}
+		                                          </if>
+		                                          <if test="trdDt != null and trdDt != ''">
+		                                          , #{trdDt}
+		                                          </if>
+		                                          <if test="trdTm != null and trdTm != ''">
+		                                          , #{trdTm}
+		                                          </if>
+		                                          <if test="orgTrdNo != null and orgTrdNo != ''">
+		                                          , #{orgTrdNo}
+		                                          </if>
+		                                          <if test="cnclAmt != null and cnclAmt != ''">
+		                                          , #{cnclAmt}
+		                                          </if>
+		                                          <if test="remark != null and remark != ''">
+		                                          , #{remark}
+		                                          </if>
+		                                          , SYSDATE
+		                                          , #{workUser} )
+	</insert>
+	
+	<!-- 세틀뱅크 결제취소 로그 수정 -->
+	<update id="updateSettleCancelResLog" parameterType="HashMap">
+		/* updateSettleCancelResLog */
+	</update>
+	
+	<!-- 세틀뱅크 결제 응답전문 로그 저장 -->
+	<insert id="insertSettleNotiLog" parameterType="HashMap">
+		/* insertSettleNotiLog */
+	</insert>
+	
+	<!-- 세틀뱅크 결제 응답전문 로그 수정 -->
+	<update id="updateSettleNotiLog" parameterType="HashMap">
+		/* updateSettleNotiLog */
+	</update>
+</mapper>
