@@ -24,16 +24,38 @@ public class homeMainController {
 	@RequestMapping("/about")
 	public String about(Model model) {
 		System.out.println("about");
-		// 기본 정보 조회 
 		model.addAttribute("menu", "About");
 		return "homepage/about";	
 	}
 	
 	@RequestMapping("/service")
 	public String service(Model model) {
-		System.out.println("service");
-		// 기본 정보 조회 
+		System.out.println("service"); 
 		model.addAttribute("menu", "Service");
 		return "homepage/service";	
 	}
+	
+	@RequestMapping("/contact")
+	public String contact(Model model) {
+		System.out.println("contact"); 
+		model.addAttribute("menu", "Contact");
+		return "homepage/contact";	
+	}
+	
+	@RequestMapping("/blog")
+	public String blog(Model model) {
+		System.out.println("blog"); 
+		model.addAttribute("menu", "Blog");
+		return "homepage/blog";	
+	}
+	
+	@RequestMapping("/blog_detail")
+	public String blog_detail(Model model) {
+		System.out.println("blog"); 
+		model.addAttribute("menu", "Blog Detail");
+		return "homepage/blog_detail";	
+	}
+	
+	
+	
 }

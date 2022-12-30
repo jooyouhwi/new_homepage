@@ -2,25 +2,48 @@
 
 <script th:src="@{~/js/jquery-3.6.3.min.js}"></script>
 <script type="text/javascript" th:inline="javascript">
+
+let menu = "";
+
 	$(document).ready(function(){
-		const menu = /*[[${menu}]]*/ '';
+		menu = /*[[${menu}]]*/ '';
 		fn_menu();
+		
+		
+		console.log($(".navbar-nav").find('a'));
+		
+		if(menu =="About"){
+			$(".navbar-nav > a").eq(1).addClass("active");
+		}else if(menu == "Service"){
+			$(".navbar-nav > a").eq(2).addClass("active");
+		}else if(menu =="Blog"){
+			$(".navbar-nav").find('a').eq(3).addClass("active")
+			$(".navbar-nav").find('a').eq(4).addClass("active")
+		}else if(menu =="Blog Detail"){
+			$(".navbar-nav").find('a').eq(3).addClass("active")
+			$(".navbar-nav").find('a').eq(5).addClass("active")
+		}else if(menu =="Contact"){
+			$(".navbar-nav").find('a').eq(12).addClass("active")
+		}
+		
+		
+		//nav-item nav-link
+		//nav-link dropdown-toggle active
+		
 	});
 	
 	function fn_menu(){
-		const html = ""; 
-		let array = new Array('Home','About','Service');
+		let html = ""; 
+		let array = new Array('Home','About','Service',"Blog",'Blog Detail','Contact');
 		for (let i=0; i < array.length; i ++){
 			if(array[i] == menu){
-				console.log(menu);
 				html +='<h1 class="display-4 text-white animated zoomIn">'+menu+'</h1>';
 				html +='<a href="" class="h5 text-white">Home</a>';
 				html +='<i class="far fa-circle text-white px-2"></i>';
 				html +='<a href="" class="h5 text-white">'+menu+'</a>';
 			}
 		}
-		$("#menu").html(html);
-		
+		$("#menu-title").html(html);
 	}
 	
 </script>
@@ -39,8 +62,8 @@
     <!-- Navbar Start -->
     <div class="container-fluid position-relative p-0">
         <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
-            <a href="index.html" class="navbar-brand p-0">
-                <h1 class="m-0"><i class="fa fa-user-tie me-2"></i>Startup</h1>
+            <a th:href="${'/home'}" class="navbar-brand p-0">
+                <h1 class="m-0"><i class="fa fa-user-tie me-2"></i>Company</h1>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="fa fa-bars"></span>
@@ -48,13 +71,13 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
                     <a th:href="${'/home'}" class="nav-item nav-link">Home</a>
-                    <a th:href="${'/about'}" class="nav-item nav-link active">About</a>
+                    <a th:href="${'/about'}" class="nav-item nav-link">About</a>
                     <a th:href="${'/service'}" class="nav-item nav-link">Services</a>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Blog</a>
+                        <a th:href="${'/blog'}" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Blog</a>
                         <div class="dropdown-menu m-0">
-                            <a href="blog.html" class="dropdown-item">Blog Grid</a>
-                            <a href="detail.html" class="dropdown-item">Blog Detail</a>
+                            <a th:href="${'/blog'}" class="dropdown-item">Blog Grid</a>
+                            <a th:href="${'blog_detail'}" class="dropdown-item">Blog Detail</a>
                         </div>
                     </div>
                     <div class="nav-item dropdown">
@@ -67,16 +90,16 @@
                             <a href="quote.html" class="dropdown-item">Free Quote</a>
                         </div>
                     </div>
-                    <a href="contact.html" class="nav-item nav-link">Contact</a>
+                    <a th:href="${'/contact'}" class="nav-item nav-link">Contact</a>
                 </div>
                 <butaton type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></butaton>
-                <a href="https://htmlcodex.com/startup-company-website-template" class="btn btn-primary py-2 px-4 ms-3">Download Pro Version</a>
+                <!-- <a href="https://htmlcodex.com/startup-company-website-template" class="btn btn-primary py-2 px-4 ms-3">Download Pro Version</a> -->
             </div>
         </nav>
 
         <div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 90px;">
             <div class="row py-5">
-                <div class="col-12 pt-lg-5 mt-lg-5 text-center" id="menu">
+                <div class="col-12 pt-lg-5 mt-lg-5 text-center" id="menu-title">
                     <!-- <h1 class="display-4 text-white animated zoomIn">About Us</h1>
                     <a href="" class="h5 text-white">Home</a>
                     <i class="far fa-circle text-white px-2"></i>
