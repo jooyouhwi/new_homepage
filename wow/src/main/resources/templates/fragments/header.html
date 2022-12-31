@@ -5,8 +5,21 @@
 	let menu =""; 
 	$(document).ready(function(){
 		menu = /*[[${menu}]]*/'';
-		fn_menu();
+		fn_menu();      
+		menu_active();
 	});
+	
+	function menu_active(){
+		//console.log($(".navbar-nav").find("a"));
+		if(menu =="Home"){
+		}else if(menu =="About"){
+			$(".navbar-nav").find("a").eq(1).addClass("active");
+		}else if(menu =="Service"){
+			$(".navbar-nav").find("a").eq(2).addClass("active");
+		}else if(menu =="Contact"){
+			$(".navbar-nav").find("a").eq(12).addClass("active");
+		}
+	}
 	
 	function fn_menu(){
 		let html = ""; 
@@ -77,7 +90,7 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
                     <a th:href="${'/home'}" class="nav-item nav-link">Home</a>
-                    <a th:href="${'/about'}" class="nav-item nav-link active">About</a>
+                    <a th:href="${'/about'}" class="nav-item nav-link">About</a>
                     <a th:href="${'/service'}" class="nav-item nav-link">Services</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Blog</a>

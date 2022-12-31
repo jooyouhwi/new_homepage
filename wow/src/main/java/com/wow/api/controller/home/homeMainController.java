@@ -42,7 +42,7 @@ public class homeMainController {
 		System.out.println("contact");
 		// 기본 정보 조회 
 		model.addAttribute("menu", "Contact");
-		return "homepage/contact";	
+		return "homepage/contact";	 
 	}
 	
 }
