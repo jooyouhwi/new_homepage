@@ -10,7 +10,7 @@ public class homeMainController {
 	
 	@RequestMapping("/")
 	public String layout() {
-		System.out.println("index");
+		System.out.println("index"); 
 		return "index";	
 	} 
 	
@@ -36,4 +36,13 @@ public class homeMainController {
 		model.addAttribute("menu", "Service");
 		return "homepage/service";	
 	}
+	
+	@RequestMapping("/contact")
+	public String contact(Model model) {
+		System.out.println("contact");
+		// 기본 정보 조회 
+		model.addAttribute("menu", "Contact");
+		return "homepage/contact";	
+	}
+	
 }

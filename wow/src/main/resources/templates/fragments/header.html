@@ -2,14 +2,16 @@
 
 <script th:src="@{~/js/jquery-3.6.3.min.js}"></script>
 <script type="text/javascript" th:inline="javascript">
+	let menu =""; 
 	$(document).ready(function(){
-		const menu = /*[[${menu}]]*/ '';
+		menu = /*[[${menu}]]*/'';
 		fn_menu();
 	});
 	
 	function fn_menu(){
-		const html = ""; 
-		let array = new Array('Home','About','Service');
+		let html = ""; 
+		let array = new Array('Home','About','Service','Contact');
+		console.log(array);
 		for (let i=0; i < array.length; i ++){
 			if(array[i] == menu){
 				console.log(menu);
@@ -19,16 +21,43 @@
 				html +='<a href="" class="h5 text-white">'+menu+'</a>';
 			}
 		}
-		$("#menu").html(html);
+		$("#menu_title").html(html);
 		
 	}
 	
 </script>
 
+<head>
+    <meta charset="utf-8">
+    <title>Startup - Startup Website Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
 
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
 
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+	
+	
 	
 	<!-- Spinner Start -->
     <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
@@ -67,7 +96,7 @@
                             <a href="quote.html" class="dropdown-item">Free Quote</a>
                         </div>
                     </div>
-                    <a href="contact.html" class="nav-item nav-link">Contact</a>
+                    <a th:href="${'/contact'}" class="nav-item nav-link">Contact</a>
                 </div>
                 <butaton type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></butaton>
                 <a href="https://htmlcodex.com/startup-company-website-template" class="btn btn-primary py-2 px-4 ms-3">Download Pro Version</a>
@@ -76,7 +105,7 @@
 
         <div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 90px;">
             <div class="row py-5">
-                <div class="col-12 pt-lg-5 mt-lg-5 text-center" id="menu">
+                <div class="col-12 pt-lg-5 mt-lg-5 text-center" id="menu_title">
                     <!-- <h1 class="display-4 text-white animated zoomIn">About Us</h1>
                     <a href="" class="h5 text-white">Home</a>
                     <i class="far fa-circle text-white px-2"></i>
