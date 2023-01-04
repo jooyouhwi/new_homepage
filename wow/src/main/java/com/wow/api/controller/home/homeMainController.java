@@ -10,7 +10,7 @@ public class homeMainController {
 	
 	@RequestMapping("/")
 	public String layout() {
-		System.out.println("index");
+		System.out.println("index"); 
 		return "index";	
 	} 
 	
@@ -55,7 +55,5 @@ public class homeMainController {
 		model.addAttribute("menu", "Blog Detail");
 		return "homepage/blog_detail";	
 	}
-	
-	
 	
 }
